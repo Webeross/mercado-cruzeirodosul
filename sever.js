@@ -29,6 +29,26 @@ app.get('/cardapio', (req, res) => {
     });
 });
 
+app.get('/cadastro', (req, res) => {
+    fs.readFile(path.join(__dirname, 'cadastrar.html'), (err, data) => {
+        if (err) {
+            res.status(500).send("500 - Erro Interno do Servidor");
+        } else {
+            res.status(200).type('text/html').send(data);
+        }
+    });
+});
+
+app.get('/entrar', (req, res) => {
+    fs.readFile(path.join(__dirname, 'entrar.html'), (err, data) => {
+        if (err) {
+            res.status(500).send("500 - Erro Interno do Servidor");
+        } else {
+            res.status(200).type('text/html').send(data);
+        }
+    });
+});
+
 // Rota para o cardápio hortifruti
 app.get('/hortifruti', (req, res) => {
     fs.readFile(path.join(__dirname, 'cardapio_hortifruti.html'), (err, data) => {
