@@ -1,0 +1,103 @@
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&display=swap');
+
+body {
+    font-family: "Poppins", sans-serif;
+    margin: 0;
+    padding: 0;
+    background-image: linear-gradient(to left, #fde8a7, #f9c98c);
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 30px;
+    background-color: #ffffff;
+    border: 2px solid #f79439;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+.cardapio {
+    background-color: #F8EAB8;
+    border: 2px solid #f79439;
+    border-radius: 10px;
+    padding: 20px;
+}
+
+h1 {
+    color: #f79439;
+    text-align: center;
+    font-size: 48px;
+    margin-bottom: 0px;
+}
+
+.h1 {
+    color: #f79439;
+    text-align: center;
+    font-weight: 600;
+    margin-bottom: 0px;
+}
+
+.monte {
+    color: #f79439;
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 0px;
+}
+
+.produto-img {
+    width: 100%; /* Ajuste a largura da imagem para ocupar 100% do espaço disponível */
+    height: auto; /* Mantenha a proporção da imagem */
+    border-radius: 8px; /* Borda arredondada para as imagens */
+    margin-bottom: 10px; /* Espaçamento abaixo da imagem */
+}
+
+
+h2 {
+    color: #f79439;
+}
+
+label {
+    display: flex; /* Use flexbox for alignment */
+    align-items: center; /* Align items vertically */
+    margin-top: 10px;
+    font-weight: bold;
+    color: #555;
+}
+
+input[type="radio"],
+input[type="checkbox"] {
+    margin-right: 10px;
+}
+
+button {
+    border-radius: 5px;
+    background-color: #f39743;
+    color: white;
+    border: #f39743;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-weight: 1000;
+    letter-spacing: 2px;
+    padding: 10px 20px;
+    border-radius: 5px;
+    transition: 0.3s;
+    cursor: pointer; /* Add a pointer cursor */
+}
+
+button:hover {
+    background-color: #fcd15e;
+    transition: 0.7s;
+}
+
+p {
+    margin-top: 10px;
+    font-size: 18px;
+    color: #555;
+}
+
+hr {
+    margin-top: 20px;
+    border: none;
+    border-top: 1px solid #ccc;
+}

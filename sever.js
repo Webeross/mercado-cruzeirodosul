@@ -49,17 +49,6 @@ app.get('/entrar', (req, res) => {
     });
 });
 
-// Rota para o cardápio hortifruti
-app.get('/hortifruti', (req, res) => {
-    fs.readFile(path.join(__dirname, 'cardapio_hortifruti.html'), (err, data) => {
-        if (err) {
-            res.status(500).send("500 - Erro Interno do Servidor");
-        } else {
-            res.status(200).type('text/html').send(data);
-        }
-    });
-});
-
 // Rota para pedidos
 app.get('/pedido', (req, res) => {
     fs.readFile(path.join(__dirname, 'pedido.html'), (err, data) => {

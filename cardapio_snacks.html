@@ -1,247 +1,153 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MERCADO ARMEGES</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
-    <script src="https://kit.fontawesome.com/3ffa06ba97.js" crossorigin="anonymous"></script>
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-    <link rel="shortcut icon" href="img/carrinho.png" type="image/x-icon">
-    <link rel="stylesheet" href="/estilizacao/style_hortifruti.css">
-    <style>
-        /* Garantir que o rodapé esteja ao final da página */
-        body {
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .container {
-            flex-grow: 1;
-        }
-
-        .produtos {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
-        }
-
-        .produto {
-            width: 30%;
-            margin-bottom: 20px;
-        }
-
-        .produto-img {
-            max-width: 100%;
-        }
-
-        /* Estilo do rodapé */
-        .footer-distributed {
-            background-color: #333;
-            color: #fff;
-            padding: 20px;
-            text-align: center;
-            width: 100%;
-            margin-top: 30px;
-            transition: all 0.3s ease-in-out;
-        }
-
-        .footer-distributed .footer-links a {
-            color: #f2f2f2;
-            margin: 0 10px;
-            text-decoration: none;
-        }
-
-        .footer-distributed .footer-links a:hover {
-            color: #f79439;
-        }
-
-        .footer-distributed .footer-company-about span {
-            font-weight: bold;
-        }
-
-        /* Inicialmente o rodapé deve estar visível */
-        .footer-hidden {
-            display: none;
-        }
-    </style>
+    <title>RENEITIS MERCADO</title>
+    
+    <link rel="stylesheet" href="style_cardapio.css"> <!-- Link para o CSS externo -->
 </head>
 
 <body>
-    <header>
-        <h2>
-            <a href="index.html" class="logo" target="_blank">
-                <img src="img/logotipo.png" alt="" id="imglogo">
-            </a>
-        </h2>    
-        <div class="navegacao">
-            <form>
-                <div class="search">
-                    <i class="fa-solid fa-magnifying-glass" style="padding: 15px; color: #c4323d;"></i>
-                    <input class="search-input" type="search" placeholder="Pesquise por produtos">
-                </div>
-            </form>
-        </div>
-        <div class="dropdown">
-            <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                <i class="fa-solid fa-user" style="color: #c42d3c; padding: 5px"></i>
-                Entrar
-            </button>
-            <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">Entre</a></li>
-                <li><a class="dropdown-item" href="#">Cadastrar-se</a></li>
-            </ul>
-        </div>
-        <div class="carrinho"></div>
-        <button class="btnCarrinho" type="button">
-            <i class="fa-solid fa-cart-shopping" style="color: #f2c30e; padding: 5px;"></i>
-        </button>
-    </header>
-
     <div class="container">
-        <h1>Snacks Bar</h1>
-        <p>Selecione os produtos que deseja adicionar ao seu carrinho!</p>
-
-        <div class="produtos">
-            <!-- Batata Frita -->
-            <div class="produto">
-                <img src="img/batataf.png" alt="Batata Frita" class="produto-img">
-                <h2>Batata Frita</h2>
-                <p>R$ 6.00</p>
-                <label>
-                    <input type="checkbox" name="produto" value="Batata Frita"> Adicionar ao carrinho
-                </label>
-            </div>
-
-            <!-- Pipoca -->
-            <div class="produto">
-                <img src="img/pipoca.png" alt="Pipoca" class="produto-img">
-                <h2>Pipoca</h2>
-                <p>R$ 3.50</p> <!-- Insira o preço da Pipoca aqui -->
-                <label>
-                    <input type="checkbox" name="produto" value="Pipoca"> Adicionar ao carrinho
-                </label>
-            </div>
-
-            <!-- Amendoim -->
-            <div class="produto">
-                <img src="img/amendoim.png" alt="Amendoim" class="produto-img">
-                <h2>Amendoim</h2>
-                <p>R$ 4.00</p> <!-- Insira o preço do Amendoim aqui -->
-                <label>
-                    <input type="checkbox" name="produto" value="Amendoim"> Adicionar ao carrinho
-                </label>
-            </div>
-
-            <!-- Mix de Castanhas -->
-            <div class="produto">
-                <img src="img/mix-de-amendoas-390g-313x404.png" alt="Mix de Castanhas" class="produto-img">
-                <h2>Mix de Castanhas</h2>
-                <p>R$ 8.00</p> <!-- Insira o preço do Mix de Castanhas aqui -->
-                <label>
-                    <input type="checkbox" name="produto" value="Mix de Castanhas"> Adicionar ao carrinho
-                </label>
-            </div>
-
-            <!-- Biscoito -->
-            <div class="produto">
-                <img src="img/BOLACHA-PASSATEMPO-CHOCOLATE.png" alt="Biscoito" class="produto-img">
-                <h2>Biscoito</h2>
-                <p>R$ 2.50</p> <!-- Insira o preço do Biscoito aqui -->
-                <label>
-                    <input type="checkbox" name="produto" value="Biscoito"> Adicionar ao carrinho
-                </label>
-            </div>
-
-            <!-- Barrinha de Cereal -->
-            <div class="produto">
-                <img src="img/barrinha de cereal.png" alt="Barrinha de Cereal" class="produto-img">
-                <h2>Barrinha de Cereal</h2>
-                <p>R$ 3.00</p> <!-- Insira o preço da Barrinha de Cereal aqui -->
-                <label>
-                    <input type="checkbox" name="produto" value="Barrinha de Cereal"> Adicionar ao carrinho
-                </label>
-            </div>
-
-            <!-- Chocolate -->
-            <div class="produto">
-                <img src="img/chocolate.png" alt="Chocolate" class="produto-img">
-                <h2>Chocolate</h2>
-                <p>R$ 5.50</p> <!-- Insira o preço do Chocolate aqui -->
-                <label>
-                    <input type="checkbox" name="produto" value="Chocolate"> Adicionar ao carrinho
-                </label>
-            </div>
-
-            <!-- Bala -->
-            <div class="produto">
-                <img src="img/bala.png" alt="Bala" class="produto-img">
-                <h2>Bala</h2>
-                <p>R$ 1.00</p> <!-- Insira o preço da Bala aqui -->
-                <label>
-                    <input type="checkbox" name="produto" value="Bala"> Adicionar ao carrinho
-                </label>
-            </div>
-
-            <!-- Chiclete -->
-            <div class="produto">
-                <img src="img/Chiclete-Tutti-Frutti-Bubbaloo-Pacote-50g-10-Unidades.png" alt="Chiclete" class="produto-img">
-                <h2>Chiclete</h2>
-                <p>R$ 0.80</p> <!-- Insira o preço do Chiclete aqui -->
-                <label>
-                    <input type="checkbox" name="produto" value="Chiclete"> Adicionar ao carrinho
-                </label>
-            </div>
-
-            <!-- Gelatina -->
-            <div class="produto">
-                <img src="img/gelatina.png" alt="Gelatina" class="produto-img">
-                <h2>Gelatina</h2>
-                <p>R$ 2.00</p> <!-- Insira o preço da Gelatina aqui -->
-                <label>
-                    <input type="checkbox" name="produto" value="Gelatina"> Adicionar ao carrinho
-                </label>
-            </div>
-
-            <!-- Marshmallow -->
-            <div class="produto">
-                <img src="img/mashm.png" alt="Marshmallow" class="produto-img">
-                <h2>Marshmallow</h2>
-                <p>R$ 4.00</p> <!-- Insira o preço do Marshmallow aqui -->
-                <label>
-                    <input type="checkbox" name="produto" value="Marshmallow"> Adicionar ao carrinho
-                </label>
-            </div>
+        <div class="cardapio">
+            <h1> CARDÁPIO RENEITIS</h1>
+            <p class="h1">O sabor que renova seu paladar!</p>
+            <br>
         </div>
+        <h2 class="monte"> Monte seu Pedido :)</h2>
+        <br>
+        <hr>
 
-        <button id="add-to-cart">Adicionar ao Carrinho</button>
+        <h2>Selecione o item desejado:</h2>
+
+        <!-- Itens de Hortifruti -->
+        <h3>Hortifruti</h3>
+
+        <label>
+            <input type="checkbox" name="produto" value="Banana"> 
+            <img src="img/banana.png" alt="Banana" style="width: 50px; height: 50px;"> 
+            Banana - R$ 2.50
+        </label>
+        <label>
+            <input type="checkbox" name="produto" value="Maçã"> 
+            <img src="img/maca.png" alt="Maçã" style="width: 50px; height: 50px;"> 
+            Maçã - R$ 3.00
+        </label>
+        <label>
+            <input type="checkbox" name="produto" value="Laranja"> 
+            <img src="img/laranja.png" alt="Laranja" style="width: 50px; height: 50px;"> 
+            Laranja - R$ 4.00
+        </label>
+        <label>
+            <input type="checkbox" name="produto" value="Tomate"> 
+            <img src="https://via.placeholder.com/50x50?text=Tomate" alt="Tomate" style="width: 50px; height: 50px;"> 
+            Tomate - R$ 5.00
+        </label>
+        <label>
+            <input type="checkbox" name="produto" value="Alface"> 
+            <img src="https://via.placeholder.com/50x50?text=Alface" alt="Alface" style="width: 50px; height: 50px;"> 
+            Alface - R$ 3.50
+        </label>
+        <label>
+            <input type="checkbox" name="produto" value="Cebola"> 
+            <img src="https://via.placeholder.com/50x50?text=Cebola" alt="Cebola" style="width: 50px; height: 50px;"> 
+            Cebola - R$ 2.20
+        </label>
+        <label>
+            <input type="checkbox" name="produto" value="Cenoura"> 
+            <img src="https://via.placeholder.com/50x50?text=Cenoura" alt="Cenoura" style="width: 50px; height: 50px;"> 
+            Cenoura - R$ 3.80
+        </label>
+        <label>
+            <input type="checkbox" name="produto" value="Pepino"> 
+            <img src="https://via.placeholder.com/50x50?text=Pepino" alt="Pepino" style="width: 50px; height: 50px;"> 
+            Pepino - R$ 2.00
+        </label>
+
+        <!-- Itens de Snacks -->
+        <h3>Snacks</h3>
+
+        <label>
+            <input type="checkbox" name="produto" value="Batata Frita"> 
+            <img src="img/batataf.png" alt="Batata Frita" style="width: 50px; height: 50px;"> 
+            Batata Frita - R$ 6.00
+        </label>
+        <label>
+            <input type="checkbox" name="produto" value="Pipoca"> 
+            <img src="img/pipoca.png" alt="Pipoca" style="width: 50px; height: 50px;"> 
+            Pipoca - R$ 4.00
+        </label>
+        <label>
+            <input type="checkbox" name="produto" value="Amendoim"> 
+            <img src="img/amendoim.png" alt="Amendoim" style="width: 50px; height: 50px;"> 
+            Amendoim - R$ 3.50
+        </label>
+        <label>
+            <input type="checkbox" name="produto" value="Mix de Castanhas"> 
+            <img src="img/mix-de-amendoas-390g-313x404.png" alt="Mix de Castanhas" style="width: 50px; height: 50px;"> 
+            Mix de Castanhas - R$ 8.50
+        </label>
+        <label>
+            <input type="checkbox" name="produto" value="Biscoito"> 
+            <img src="img/BOLACHA-PASSATEMPO-CHOCOLATE.png" alt="Biscoito" style="width: 50px; height: 50px;"> 
+            Biscoito - R$ 2.50
+        </label>
+        <label>
+            <input type="checkbox" name="produto" value="Barrinha de Cereal"> 
+            <img src="img/barrinha de cereal.png" alt="Barrinha de Cereal" style="width: 50px; height: 50px;"> 
+            Barrinha de Cereal - R$ 2.00
+        </label>
+        <label>
+            <input type="checkbox" name="produto" value="Chocolate"> 
+            <img src="img/chocolate.png" alt="Chocolate" style="width: 50px; height: 50px;"> 
+            Chocolate - R$ 5.00
+        </label>
+        <label>
+            <input type="checkbox" name="produto" value="Bala"> 
+            <img src="img/bala.png" alt="Bala" style="width: 50px; height: 50px;"> 
+            Bala - R$ 1.50
+        </label>
+        <label>
+            <input type="checkbox" name="produto" value="Chiclete"> 
+            <img src="img/Chiclete-Tutti-Frutti-Bubbaloo-Pacote-50g-10-Unidades.png" alt="Chiclete" style="width: 50px; height: 50px;"> 
+            Chiclete - R$ 1.00
+        </label>
+        <label>
+            <input type="checkbox" name="produto" value="Pirulito"> 
+            <img src="https://via.placeholder.com/50x50?text=Pirulito" alt="Pirulito" style="width: 50px; height: 50px;"> 
+            Pirulito - R$ 1.00
+        </label>
+        <label>
+            <input type="checkbox" name="produto" value="Gelatina"> 
+            <img src="img/gelatina.png" alt="Gelatina" style="width: 50px; height: 50px;"> 
+            Gelatina - R$ 1.75
+        </label>
+        <label>
+            <input type="checkbox" name="produto" value="Marshmallow"> 
+            <img src="img/mashm.png" alt="Marshmallow" style="width: 50px; height: 50px;"> 
+            Marshmallow - R$ 3.00
+        </label>
+
+        <br>
+        <hr>
+
+        <h2>Selecione os opcionais:</h2>
+        <label>
+            <input type="checkbox" name="opcionais-embalagem" data-extra="opcionais-embalagem"> 
+            Sacola Ecobag +R$ 2.50   
+        </label>
+        <label>
+            <input type="checkbox" name="opcionais-cartao" data-extra="opcionais-cartao"> 
+            Sacola Plástica +R$ 1.00   
+        </label>
+        <br>
+        <hr>
+
+        <button>Adicionar ao Carrinho</button>
     </div>
-
-    <footer class="footer-distributed">
-        <div class="footer-left">
-            <h3>ARMEGES</h3>
-            <p class="footer-links">
-                <a href="#sobre">INSTITUCIONAL</a> |
-                <a href="#projetos">CATEGORIAS</a> |
-                <a href="#atuacao">TERMOS BUSCADOS</a> |
-                <a href="#servicos">CENTRAL DE ATENDIMENTO</a>
-            </p>
-            <p class="footer-company-name">2024 | <strong>ARMEGES</strong></p>
-        </div>
-
-        <div class="footer-center"></div>
-
-        <div class="footer-right">
-            <p class="footer-company-about">
-                <span>FALE CONOSCO</span><br>
-                NÚMERO DE TELEFONE: (11) 000000-00<br>
-                END
-            </p>
-        </div>
-    </footer>
-
+    
+    <script src="./cardapio.js"></script>
 </body>
 </html>
