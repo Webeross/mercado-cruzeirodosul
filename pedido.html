@@ -1,63 +1,79 @@
-
 <!DOCTYPE html>
 <html lang="pt-BR">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Pedidos</title>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pedidos</title>
 
-        <style>
-            @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
-            body{
-                font-family: "poppins", sans-serif;
-                text-align: center;
-                margin: 0;
-                padding: 0;
-                background-image: linear-gradient(to left,#fde8a7, #f9c98c );
-            }
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+        body {
+            font-family: "poppins", sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            background-image: linear-gradient(to left, #fde8a7, #f9c98c);
+        }
 
-            .container{
-                max-width: 600px;
-                margin: 110px auto;
-                padding: 30px;
-                background-color: aliceblue;
-                border-radius: 10px;
-                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 30px;
+            background-color: aliceblue;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
 
-            }
+        h1 {
+            color: #f79439;
+        }
 
+        h2 {
+            font-weight: 500;
+            color: #f79439;
+        }
 
-            h1{
-                color: #f79439;
-            }
+        table {
+            align-items: center;
+            margin-left: 95px;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
 
-            h2{
-                font-weight: 500;
-                color: #f79439;
-            }
+        table, th, td {
+            border: 1px solid brown;
+            padding: 10px;
+        }
 
-            table{
-                align-items: center;
-                margin-left: 95px;
-                border-collapse: collapse;
-                margin-top: 20px;
-                
-            }
+        .form-delivery {
+            margin-top: 30px;
+            padding: 15px;
+            background-color: #f4f4f4;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
 
-            table, th, td{
-                
-                border: 1px solid brown;
-                padding: 10px;
-                
-            }
-        </style>
-    </head>
+        .form-delivery input,
+        .form-delivery button {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+        }
 
-    <body>
-        
-        <div class="container">
-            <h1>RESUMO DO PEDIDO</h1>
+        .form-delivery input:focus,
+        .form-delivery button:focus {
+            outline: none;
+            border-color: #f79439;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>RESUMO DO PEDIDO</h1>
 
+        <!-- Resumo do Pedido -->
         <table>
             <tr>
                 <th>----------- RESUMO DO PEDIDO -----------</th>
@@ -70,27 +86,78 @@
         <h2>TOTAL PEDIDO:</h2>
         <p id="pedido-total">R$ ------</p>
 
+        <h2>TOTAL COM TAXA DE ENTREGA:</h2>
+        <p id="pedido-total-com-taxa">R$ ------</p>
+
+        <!-- Formulário de Endereço de Delivery -->
+        <div class="form-delivery">
+            <h2>Endereço para Delivery</h2>
+            <form id="form-endereco">
+                <input type="text" id="logradouro" placeholder="Rua" required>
+                <input type="text" id="bairro" placeholder="Bairro" required>
+                <input type="text" id="cidade" placeholder="Cidade" required>
+                <input type="text" id="estado" placeholder="Estado" required>
+                <input type="text" id="cep" placeholder="CEP" required>
+                <button type="submit">Confirmar Endereço</button>
+            </form>
+            <p id="endereco-confirmado"></p>
+            <p id="taxa-entrega"></p> <!-- Adicionado para mostrar a taxa de entrega abaixo do endereço -->
+        </div>
+
         <script>
-            document.addEventListener('DOMContentLoaded', function(){
-                // Extrair os parametros da URL:
+            document.addEventListener('DOMContentLoaded', function () {
+                // Extrair os parâmetros da URL:
                 const urlParams = new URLSearchParams(window.location.search);
                 const pedidoString = urlParams.get('pedido');
 
-                if(pedidoString){
+                if (pedidoString) {
                     // Converter a String JSON em objeto JavaScript
                     const pedidoJSON = JSON.parse(pedidoString);
 
-                    // Atualizar o conteudo da pagina com os detalhes do pedido
+                    // Atualizar o conteúdo da página com os detalhes do pedido
                     const descricaPedidoElement = document.getElementById('pedido-descricao');
                     descricaPedidoElement.innerHTML = pedidoJSON.descricao;
 
                     const totalPedidoElement = document.getElementById('pedido-total');
                     totalPedidoElement.textContent = 'Total do Pedido: R$ ' + pedidoJSON.total;
+
+                    // Adicionar a taxa de entrega de R$ 10.00
+                    const taxaDeEntrega = 10.00;
+                    const totalComTaxa = pedidoJSON.total + taxaDeEntrega;
+                    const totalComTaxaElement = document.getElementById('pedido-total-com-taxa');
+                    totalComTaxaElement.textContent = 'Total com Taxa de Entrega: R$ ' + totalComTaxa.toFixed(2);
                 }
+
+                // Formulário de Endereço
+                const formEndereco = document.getElementById('form-endereco');
+                const enderecoConfirmadoElement = document.getElementById('endereco-confirmado');
+                const taxaEntregaElement = document.getElementById('taxa-entrega'); // Elemento da taxa de entrega
+
+                formEndereco.addEventListener('submit', function (event) {
+                    event.preventDefault(); // Evitar o envio do formulário
+
+                    // Coletar os dados do formulário de endereço
+                    const logradouro = document.getElementById('logradouro').value;
+                    const bairro = document.getElementById('bairro').value;
+                    const cidade = document.getElementById('cidade').value;
+                    const estado = document.getElementById('estado').value;
+                    const cep = document.getElementById('cep').value;
+
+                    // Exibir os dados do endereço confirmado
+                    enderecoConfirmadoElement.innerHTML = ` 
+                        <strong>Endereço Confirmado:</strong><br>
+                        ${logradouro}, ${bairro}, ${cidade} - ${estado}<br>
+                        CEP: ${cep}
+                    `;
+
+                    // Exibir a taxa de entrega abaixo do endereço
+                    taxaEntregaElement.innerHTML = ` 
+                        <strong>Taxa de Entrega:</strong><br>
+                        R$ 10,00
+                    `;
+                });
             })
         </script>
-        </div>
-        
-
-    </body>
+    </div>
+</body>
 </html>
